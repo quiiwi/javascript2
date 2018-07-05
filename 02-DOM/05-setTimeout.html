@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeout</title>
+    <style>
+        img{
+            width: 600px;
+            border: 2px solid transparent;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="imgs/c.jpg" alt="une image">
+    </div>
+
+    <script>
+        //La gestion du temps : une aniamtion avec setTimeOut :
+        //Au clic sur l'image, une bordure rouge apparaît puis l'image disparaît en fondu après 1s :
+
+            var image = document.querySelector('.container img');; //sélectionne la balise img qui se trouve dans la classe container
+
+        function animImage(){
+            image.style.transition = 'opacity 1s ease';
+            image.style.opacity = '0';
+        }
+        
+        image.addEventListener('click', function(){
+            image.style.border = '2px solid red';
+            setTimeout(animImage, 1000); //appelle la fonction animeImage (sans sa paire de () pour ne pas l'exécuter immédiatmeent) au bout d'une temporisation de 1000 millisecondes (= 1secondes)
+        });
+
+    </script>
+
+</body>
+</html>

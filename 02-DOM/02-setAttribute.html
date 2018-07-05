@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM</title>
+	<style>
+		img { width: 300px; height: 200px; }		
+	</style>
+</head>
+<body>
+	
+	<div>
+		<!-- on peut mettre du JS dans un attribut d'événement au sein d'une balise, ici onclick. Cette pratique est désuète. -->
+		<img src="imgs/a.jpg" id="monImage" onclick="this.src = 'imgs/b.jpg'" alt="" >
+	</div>
+	
+	<button id="changerImage">Changer d'image</button>
+
+	<script>
+		// Attributs et setAttribute :
+		var bouton = document.querySelector('#changerImage');
+
+		bouton.onclick = function() {
+			document.querySelector('#monImage').src = 'imgs/a.jpg';  // on affecte une nouvelle image à l'attribut src de #monImage. Un certain nombre d'attributs sont atteignables par la propriété du même nom : .src, .alt, .id, .href, etc, mais .className
+
+			// Peut aussi d'écrire :
+			document.querySelector('#monImage').setAttribute('src', 'imgs/a.jpg');  // setAttribute('attribut', 'valeur') permet d'affecter n'importe quelle valeur à n'importe quel attribut d'une balise
+
+		};
+
+
+
+	</script>
+
+</body>
+</html>

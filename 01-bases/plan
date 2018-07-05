@@ -1,0 +1,32 @@
+JavaScript - jQuery
+
+Jour 1 à 3 : les bases du JS
+Jour 4     : DOM :
+				- les sélecteurs
+				- la manipulation du DOM
+Jour 5     : DOM :
+                - la manipulation du DOM (suite)
+                - validation d'un formulaire
+                - une galerie d'image
+
+Jour 6 à 8  : jQuery 
+
+
+-----------------------------------------------------
+JOUR 4/5
+	- Le DOM :
+			- intro au DOM
+			- les sélecteurs
+
+			- attributs et setAttribute
+			- attributs et getAttribute
+
+			- addEventListener
+
+			- gestion du temps :
+				- setInterval
+				- setTimeout
+
+			- créer des balises dynamiquement	
+
+-----------------------------------------------------
