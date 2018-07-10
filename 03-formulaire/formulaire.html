@@ -49,9 +49,35 @@
                 champEmail.classList.add('green'); //
             }
 
-            // on bloque le submit :
-            event.preventDefault(); //bloque l'envoi du formulaire
+            //on vérifie la longueur du champ mdp :
+            if (champMDP.value.trim().length < 4 || champMDP.value.trim().length > 25) {
+                // si la longueur de la valeur du champ mdp est inférieure à 4 ou supérieure à 25 :
+                champMDP.classList.add('red');
+                erreur = true; // pour spécifier qu'il y a une erreur
+            } else {
+                //sinon la longueur est entre 4 et 25 :
+                champMDP.classList.add('green');
+            }
 
+            //Enfin, s'il y a une erreur (erreir vaut true), on bloque le formulaire et on met un message à l'internaute :
+
+            if (erreur === true){
+
+            event.preventDefault(); //bloque l'envoi du formulaire. Cette méthode permet de bloquer l'action par défaut d'une événement : bloquer un lien, l'envoi d'un formulaire, la coche d'une checkbox, etc............................................... >:^D
+                document.querySelector('#message').textContent = 'Veuillez vérifier votre saisie';
+            }
+
+        }); //FIN DU SUBMIT
+
+        // 2- On réinitialise les champs dès qu'ils changent de valeur :
+        champEmail.addEventListener('change', function(){ //l'événement change se déclanche quand on change la valeur de champEmail
+        
+            this.classList.remove('red','green'); // on retire toutes les classes pour mettre une bordure par défaut
+        });
+
+        // 2- On réinitialise les champs dès qu'ils changent de valeur :
+        champMDP.addEventListener('change', function(){
+            this.classList.remove('red','green'); // on retire toutes les classes pour mettre une bordure par défaut
         });
     
     </script>
