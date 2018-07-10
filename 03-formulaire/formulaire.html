@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire</title>
+    <style>
+        .red { border: 2px solid red; }
+        .green { border: 2px solid green;}
+    </style>
+</head>
+<body>
+    <div id="message"></div>
+    <form action="">
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+        <br>
+
+        <label for="mdp">Mot de passe</label>
+        <input type="password" id="mdp" name="mdp">
+        <br>
+
+        <input type="submit" value="s'inscrire">
+
+    </form>
+
+    <script>
+    
+        var champEmail = document.getElementById('email');
+        var champMDP = document.getElementById('mdp');
+
+        // 1- On vérifie tous les champs quand on clqiue sur "s'inscrire" :
+        document.querySelector('form').addEventListener('submit',function(event){
+            // submit se déclanche quand on soumet un formulaire avec l'input "submit"
+
+            //l'objet event dans les parentèses de notre funtion sert à fornir des informations sur l'événement actuellement déclenché. par exemmple, vous pouvez récupérer les touches enfoncés, les coordonnées du curseur, ou bloquer un évenement tel que l'envoi (=submit) du formulaire. Ce paramètre s'écrit "e" ou "event" par convention.
+
+            var erreur = false; // pour dire qu'il n'y a pas d'erreur au début. On mettra cette variable a true dès qu'une erreur cera produite sur le formulaire
+
+            // On vérifie le champ email :
+            if (champEmail.value.indexOf('@') == -1  ){
+                // la propriété value permet d'accéder à la valeur saisie par l'internaite dans l'input champEmail. indexOf('@') retourne la position de l'@ dans cette valeur. S'il n y est pas, cette léthode retourne -1.
+                champEmail.classList.add('red');
+                erreur = true; //on passe la variable à true pour dire qu'il y a une erreur
+            } else {
+                //on est dans le else quand l'@ est dans la valeur de l'input email:
+                champEmail.classList.add('green'); //
+            }
+
+            // on bloque le submit :
+            event.preventDefault(); //bloque l'envoi du formulaire
+
+        });
+    
+    </script>
+
+
+</body>
+</html>
