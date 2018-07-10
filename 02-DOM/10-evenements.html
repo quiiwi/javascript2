@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste des événements</title>
+    <style>
+    .height {  padding: 40px; border: 1px solid black ; }
+    </style>
+</head>
+<body>
+
+    <div class="height">
+        <div class="height">
+            <div class="height">
+                Texte
+            </div>
+        </div>
+    </div>
+
+    <div id="message"></div>
+
+    <script>
+    
+    document.querySelector('.height').addEventListener('mouseenter', function(){
+            message.innerHTML += '<br> action';
+    });
+
+    /* 
+    Liste des principaux événements sans le "on" :
+
+    //Souris : 
+        click      ==> quand on clique
+        dblclick   ==> quand on double-clique
+
+        mouseover  ==> quand le curseur de la souris entre sur un élément(les éléments enfants Ne sont Pas inclus dans cette zone: mouseover se déclenche à l'entrée de CHAQUE élément)
+
+        mouseout   ==> quand le curseur de la souris quitte un élément (les éléments enfants Ne sont Pas inclus dans cette zone: mouseout se déclenche à la sortie de chaque élément)
+
+        mouseenter ==> quand la souris passe par dessus la zone qu'occupe un élément (les éléments enfants sont INCLUS dans cette zone : mouseenter ne se déclanche qu'UNE fois)
+
+        mouseleave ==> quand la souris sort de cette zone (les éléments enfants sont INCLUS dans cette zone : mouseleave ne se déclanche qu'UNE fois)
+
+        mousedown  ==> quand on abaisse un bouton de la souris
+        mouseup    ==> quand on relève un bouton de la souris
+
+        // Formulaire :
+        focus      ==> quand on active un input avec la souris pu la tabulation
+        blur       ==> quand on désactive un input avec la souris ou la tabulation
+        change     ==> quand on change la saisie dans un input, un select, ou un textarea
+        submit     ==> quand on soumet un formulaire avec l'input type "submit"
+
+        // Clavier :
+        keydown    ==> quand on enfonce un touche du clavier
+        keyup      ==> quand je la relâche
+        keypress   ==> combinaison du keydown suivi du keyup
+
+        // Fenêtre du navigateur :
+        scroll     ==> défilement de la fenêtre
+        resize     ==> redimentionnement de la fenêtre
+
+        // Document HTML :
+        DOMContentLoaded => quand le document HTML à été complétement changé et analysé pas le Dom, sans attendre que les feuilles de styles et les images sont totalement chargés :
+
+
+     */
+
+        document.addEventListener('DOMContentLoaded', function(){
+            //tout votre code JS
+            console.log('DOM entièrement changé et analysé');
+
+        });
+       
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>classList</title>
+    <style>
+        p { cursor: pointer; }
+        .red { color: red; }
+        .blue { background:cyan; width:300px; }
+    </style>
+</head>
+<body>
+    <p id="survol">Ce texte va changer de couleur au survol</p>
+    <button id="toggleBlue">Changer le background du texte</button>
+
+    <!-- exercice -->
+    <p class="texte">Je suis un paragraphe</p>
+    <p class="texte">Je suis un paragraphe</p>
+    <p class="texte">Je suis un paragraphe</p>
+    <p class="texte">Je suis un paragraphe</p>
+
+    <script>
+        // classList, et ses méthodes : add(), remove() et toggle() :
+        
+        // classList retourne la liste des classes CSS de l'élément sélectionné. Grâce aux méthodes que possède classList, on peut : ajouter une classe avec add(), retirer une clase avec remove() ou alterner l'ajout/suppression d'une class avec toggle().
+
+        var element = document.querySelector('#survol');
+
+        // En survolant le paragraphe #survol, on lui ajoute une classe "red" :
+
+        element.addEventListener('mouseover', function(){
+            this.classList.add('red'); //classList possède la méthode add() qui permet d'ajouter une classe à l'élément
+        });
+
+        // Retirer la classe "red" :
+
+        element.addEventListener('mouseout', function(){
+            this.classList.remove('red'); // à l'inverse ma méthode remove( permet de retirer une classe à l'élément)
+        });
+
+        // Ajouter ou retirer une classe alternativement à l'élément au clic sur le bouton :
+        document.querySelector('#toggleBlue').addEventListener('click',function(){
+            element.classList.toggle('blue'); //la méthode toggle() permet d'ajouter ou de retirer une classe à l'élément
+        });
+
+        //----------------
+        //Exercice : je clique sur un paragraphe .texte, il devient rouge. Je reclique dessus, il redevient noir? Utilisez la classe "red".
+
+        var elementtexte = document.querySelectorAll('.texte');
+
+
+        for(var i=0; i < elementtexte.length; i++){
+            elementtexte[i].addEventListener('click', function(){
+                this.classList.toggle('red');
+            });
+        }
+
+        //CORRECTION
+
+        /* 
+        var paragraphes = document.querySelectorAll('.texte'); //querySelectorAll = [i]
+        
+        for (var i=0; i < paragraphes.length; i++){
+            paragraphes[i].addEvenetListener('click',function(){
+                this.classList.toggle('red');
+            });
+        } 
+        */
+
+        
+
+    </script>
+</body>
+</html>
