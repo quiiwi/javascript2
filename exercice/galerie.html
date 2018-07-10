@@ -93,9 +93,11 @@ Implémentez le JavaScript de cette galerie d'images :
 
 			document.querySelector('.titre').innerHTML = this.alt; //on affiche le titre:
 
-			document.querySelector('.selected').classList.remove('selected'); //on met la bordure de la vignette rouge en blanc pour la "désélectionner", on retire la classe "selected" à la vignette qui possède la bordure pour la mettre en blanc
+			//on met la bordure de la vignette rouge en blanc pour la "désélectionner"
+			document.querySelector('.selected').classList.remove('selected'); // on retire la classe "selected" à la vignette qui possède la bordure pour la mettre en blanc
 
-			this.classList.add('selected'); //On ajoute la bordure rouge à la vignette cliqué avec la class selected
+			//On ajoute la bordure rouge à la vignette cliqué avec la class selected
+			this.classList.add('selected'); //on ajoute la classe "selected" à la vignette sur laquelle on a cliqué ("=this")
 
 		});
 	}
