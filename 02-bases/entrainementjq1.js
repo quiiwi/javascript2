@@ -71,8 +71,13 @@ $(function(){ //ce code s'éxécutera une fois le document HTML totalement charg
 
     //--------------------
     //Récupérer ou modifier la valeur d'un input avec val()
+    $('#mdp1').change(function(){
+        var texte = $('#mdp1').val(); //val() sans argument retourne la valeur saisie dans le champ #mdp1 (getter)
 
-    
+        $('#mdp2').val(texte); //val(argument) permet de changer la valeur du champ #mdp2 (settergit )
+
+    });
+
 
 
 
