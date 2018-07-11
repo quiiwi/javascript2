@@ -16,7 +16,9 @@
 			.group { position: relative; overflow: hidden; }
 			.group p { position: absolute; bottom: 5px; left: -200px; color: #fff; background: #222; margin: 0; width: 200px; }
 		</style>
-		<script src="jquery.js"></script>
+		<!-- <script src="jquery.js"></script> -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
 	</head>
 
 	<body>				
@@ -76,7 +78,85 @@
 		</div>		
 
 		<script> 
-		
+		$(function(){
+
+
+			$('#onglet2').click(function(){
+				$('#contenu2').show();
+				$('#contenu1').hide();
+			});
+			$('#onglet1').click(function(){
+				$('#contenu1').show();
+				$('#contenu2').hide();
+			});
+
+			//----------------
+
+			/* $('nav ul').hover(function(){
+				$('nav ul li').toggle('display : block');
+			}); */
+
+			$('nav ul').hover(function(){
+				$('nav ul li').show();
+				},function(){
+				$('nav ul li').hide();
+				}
+			);
+			
+
+			//----------------
+
+/* 			$('#voirMdp').click(function(){
+				$('#mdp').attr('type', 'text')
+				
+			});
+ */
+			$('#voirMdp').click(function(){
+				var A = $('#mdr').toggleAttr('password','text')
+			});
+
+			//----------------
+
+			$('.texte').each(function(i){
+				$(this).click(function(){
+					$(this).toggleClass('red');
+				});
+			});
+
+			//-----------------
+
+			$('.group').each(function(){
+				$(this).hover(function(){
+					$(this).css({
+						opacity : 0.5,
+						'transition-duration' : '1s'
+					});
+				},function(){
+					$(this).css({
+						opacity : 1,
+						'transition-duration' : '1s'
+					});
+				}
+				);
+			});
+
+/* 			$('.group').each(function(i){
+				$('.group').eq(i).hover(function(){
+					$(this).toggle(function(){
+						$(this).css({
+							opacity : 0.5
+						})
+					});
+				});
+			}); */
+
+/* 			$('.group').each(function(i){
+				$(this).mouseenter(
+					$(this)
+				)
+			}); */
+
+		});/* ICI LA FIN DE MA FONCTION CHARGE */
 		</script>
 	</body>
 </html>
