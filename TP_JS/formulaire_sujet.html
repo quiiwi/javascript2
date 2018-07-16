@@ -1,0 +1,286 @@
+<!-- 
+
+EXERCICE : 
+          HTML   : vous faites un formulaire dans la <section#formulaire> avec un champ "votre choix", une zone de texte "votre adresse" et un bouton "commander".
+
+          jQuery : vous rendez fonctionnel le formulaire :
+
+            Lors de la validation du formulaire, tous les champs doivent obligatoirement être remplis pour que celui-ci soit validé. Au cas où un champ est vide lors de la validation du formulaire, sa bordure devient rouge, sinon verte.
+
+            Quand on change la valeur d'un input, sa bordure reprend sa couleur par défaut.
+
+            Si le formulaire est validé, le remplacer par un message de confirmation "Votre commande a bien été prise en compte !".
+
+            Enfin, au clic sur une image, le numéro de l'image se reporte dans l'input "Choix" du formulaire de commande.
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire</title>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!--   <script src="jquery.js"></script> -->
+
+  <style>
+      .container{
+        max-width: 900px;
+        margin: 0 auto 300px auto;
+      }
+      #portfolio, #formulaire {
+        border: 1px solid grey;
+        display: flex;
+        flex-flow: row wrap;
+      }
+      #formulaire {
+        padding: 20px;
+      }
+      .bloc {
+          width: 250px;
+          margin: 23px;
+          height: 165px;    
+      }
+      .bloc img {
+          width: 100%;
+          height: 165px; 
+      }
+      input, textarea {
+          display: inline-block;
+          padding: 5px 10px;
+          margin: 10px 0;
+          border: 1px solid;
+          background: #fff;
+          color: #888;
+          width: 200px;
+      }
+      input[type=submit] {
+          width: 220px;
+      }
+      label {
+        display: block;
+        color: #888;
+      }
+      .red {
+        border: 1px solid red;
+      }
+      .green {
+        border: 1px solid green;
+      }
+      .succes {
+        color: green;
+      }
+
+      /* ---------------- bonus ----------------- */
+     .vignette {
+        width: 250px;
+        height: 165px;
+        margin: auto;
+        display: block;
+      }
+
+
+      #image{
+        width: 250px;
+        margin: 23px;
+        height: 165px;
+        border: 2px solid black;
+        position: relative;
+        top: 20px;
+        display: none;
+
+      }
+
+      #image img{
+        width: 100%;
+        height: 165px; 
+ 
+
+      }
+
+  </style>
+
+
+</head>
+
+<body>
+  <main class="container">
+    <h1>Fonds d'écran</h1>
+
+    <h2>Choisissez une image</h2>
+      
+    <section id="portfolio">
+      <div class="bloc ciel all">
+        <img src="imgs/2.jpg" alt="" >
+        <div class="number">#1</div>
+      </div>
+      <div class="bloc montagne all">
+        <img src="imgs/3.jpg" alt="" >
+        <div class="number">#2</div>
+      </div>
+      <div class="bloc ciel all">
+        <img src="imgs/4.jpg" alt="" >
+        <div class="number">#3</div>
+      </div>
+      <div class="bloc mer all">
+        <img src="imgs/6.jpg" alt="" >
+        <div class="number">#4</div>
+      </div>
+      <div class="bloc montagne all">
+        <img src="imgs/a.jpg" alt="" >
+        <div class="number">#5</div>
+      </div>
+      <div class="bloc montagne all">
+        <img src="imgs/b.jpg" alt="" >
+        <div class="number">#6</div>
+      </div>
+      <div class="bloc montagne all">
+        <img src="imgs/c.jpg" alt="" >
+        <div class="number">#7</div>
+      </div>
+      <div class="bloc mer all">
+        <img src="imgs/d.jpg" alt="" > 
+        <div class="number">#8</div>
+      </div>
+      <div class="bloc mer all">
+        <img src="imgs/e.jpg" alt="" >
+        <div class="number">#9</div>
+      </div>
+    </section>
+     
+    <h2>Puis passez commande</h2>
+
+    <section id="formulaire">
+      <form action="">
+
+		<div>
+        	<label for="choix">Votre choix :</label>
+			<input type="text" id="choix">
+		</div>
+
+
+		<div>
+        	<label for="adress">Votre adresse :</label>
+        	<textarea name="adress" id="adress" cols="30" rows="3"></textarea>
+		</div>
+
+        <input type="submit" id="submit" value="commander">
+
+      </form>
+
+    <div id="image">
+      <img src="" alt="">
+    </div>
+
+
+    </section>
+  </main>
+
+
+<script>
+  
+$(function(){
+
+
+
+
+
+
+
+	$('#submit').click(function(event){
+
+    var erreur = false;
+
+		var choix = $('#choix').val();
+		var adress = $('#adress').val();
+
+
+		// console.log(choix,adress);
+
+    //on vérifie le champ choix :
+		if(choix == ''){  //si choix est vide
+			erreur = true; //erreur = true pour indiquer qu'il y a une erreur
+			$('#choix').addClass('red');
+		} else{
+			$('#choix').addClass('green');
+		}
+		
+    //on vérifie le champ adresse :
+		if(adress.length < 8 /* +condition nombre  ex:37 rue de... */){
+			erreur = true;
+			$('#adress').addClass('red');
+		} else {
+			$('#adress').addClass('green');
+		}
+
+		
+		if(erreur == true){
+			event.preventDefault(); // je bloque l'événement car une ou plusieurs champs n'est pas valide. 
+		} else {
+			// event.preventDefault(); // je bloque ll'événement car je n'ai pas de page PHP lol.
+			// $('form').css({
+			// 	display : 'none'
+			// });
+			$('#formulaire').text('Votre commande a bien été prise en compte !');
+			$('#formulaire').addClass('succes');
+		}
+
+	});
+
+
+	$('#choix').change(function(){
+		$(this).removeClass('red green');
+
+	});
+
+
+	$('#adress').change(function(){
+		$(this).removeClass('red green');
+	});
+
+	
+
+	$('img').click(function(){
+
+			// console.log($(this).attr('src'));
+
+			var image = $(this).next().text(); // on sélectionne la balise directement suivante (=next()) de l'image cliquée (=this) dont on prend le contenu html
+
+      var imageSrc = $(this).attr('src');
+
+      // console.log(imageSrc);
+
+      $('#image img').attr('src',imageSrc);
+
+      $('#image').css({
+        display: 'inline'
+      });
+
+			// console.log(image[1]);
+
+			$('#choix').val(image[1]);
+		});
+
+
+
+
+
+}); //FIN DU CHARGEMENT
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
