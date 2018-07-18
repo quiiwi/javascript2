@@ -172,9 +172,9 @@ EXERCICE :
 
       </form>
 
-    <div id="image">
+    <!-- <div id="image">
       <img src="" alt="">
-    </div>
+    </div> -->
 
 
     </section>
@@ -250,22 +250,40 @@ $(function(){
 
 			var image = $(this).next().text(); // on sélectionne la balise directement suivante (=next()) de l'image cliquée (=this) dont on prend le contenu html
 
-      var imageSrc = $(this).attr('src');
+      // var imageSrc = $(this).attr('src');
 
       // console.log(imageSrc);
 
-      $('#image img').attr('src',imageSrc);
+      // $('#image img').attr('src',imageSrc);
 
-      $('#image').css({
-        display: 'inline'
-      });
+      // $('#image').css({
+      //   display: 'inline'
+      // });
+
+      //image = image.substring(1); à la place de image[1]
 
 			// console.log(image[1]);
 
 			$('#choix').val(image[1]);
-		});
+
+      //---------------------------------
+      //Bonus : l'image s'affiche sous forme de vignette à côté du formulaire :
+
+      //on crée donc cette balise image et l'nsère qu'une fois dans le HTML:
+      if($('.vignette').length == 0){
+        //si l'objet jquery qui représente les classes "vignette" a une longueur de 0, c'est qu'il est vide: la class vignette n'existe pas.
+      var vignette = document.createElement('img'); // on crée un balise <img>
+      vignette.classList.add('vignette'); // on lui ajoute la class vignette prévue dans le CSS
+      document.querySelector('#formulaire').appendChild(vignette); //on accroche vignette dans la balise #formulaire
+      }
+      document.querySelector('.vignette').src = this.src; //seule la sourc eest modifiée une fois la balise <img> insérée dans le HTML
+      
 
 
+
+		});//fin du click
+
+  
 
 
 
