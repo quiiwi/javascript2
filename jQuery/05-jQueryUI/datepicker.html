@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery UI - datepicker</title>
+
+    <!-- 
+        Exercice :
+        1- Vous implémentez un calendrier (datepicjer jQuery UI) dans l'input ci-dessous.
+        2- La date choisie est affichée au format dd-mm-yy dans l'input.
+        3- Quand on change la date, on affiche la date sélectionnée dans un alert.
+    -->
+    
+    <!-- pour lier le CSS par défaut de jQuery UI : -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https:/resources/demos/style.css">
+
+    <script
+	    src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+
+    <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous">
+    </script>
+
+    <!-- lien vers le fichier JS de régionalisation du datepicker : -->
+    <script src="../datepicker-fr.js"></script>
+    <!-- pour régionaliser : aller dans "API Documentation" du datepicker, au paragraphe "localization". Il indique un lien gitHub du fichier à télécharger : cliquer sur la version datepicker-fr.js,puis choisir "RAW", ensuite clic droit et enregistrer sous... le fichier -->
+
+</head>
+<body>
+    <div>
+        <label for="myInput">Choisissez une date:</label>
+        <input type="text" id="myInput">
+
+    </div>
+    <script>
+        $( function() {
+            $( "#myInput" ).datepicker({
+
+            /* closeText: "Fermer",
+
+            prevText: "Précédent",
+
+            nextText: "Suivant",
+
+            currentText: "Aujourd'hui",
+            
+            dateFormat: "dd/mm/yy",
+
+            dayNames: [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ],
+
+            dayNamesMin: [ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ],
+
+            monthNames: [ "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" ],
+
+            monthNamesMin: [ "Jan", "Fev", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Dec" ] */
+
+            });
+
+            $('#myInput').change(function(){
+
+                alert($(this).val());
+
+            });
+            
+        } );
+
+      
+
+    </script>
+</body>
+</html>
